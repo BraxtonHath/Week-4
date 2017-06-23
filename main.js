@@ -75,26 +75,27 @@
 
       }
 
-
-
       });
 
     });
 
-    function fetchStream(url) {
-      fetch(url).then(function(result) {
-        console.log(result);
-
-
-        audioPlayer.src = '';
-        audioPlayer.src = result.url;
-        audioPlayer.play();
+    userSearch = ' ';
+    url = 'https://api.soundcloud.com/tracks/?client_id=' + TOKEN + '&q=';
 
   });
-}
 
 
 
 
 }());
-}());
+// function fetchStream(url) {
+//   fetch(url).then(function(result) {
+//     console.log(result);
+//
+//
+//     audioPlayer.src = '';
+//     audioPlayer.src = result.url;
+//     audioPlayer.play();
+//
+// });
+// }
