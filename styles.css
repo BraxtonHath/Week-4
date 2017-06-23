@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+.flexDiv {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: auto;
+}
+
+
+.artwork img{
+  width: 100%;
+}
+
+.flexDiv a {
+  text-align: center;
+  flex: 0 0 20%;
+}
