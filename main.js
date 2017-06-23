@@ -28,53 +28,38 @@
 
 
     fetch(url).then(function(response) {
-               console.log(url);
-               response.json().then(function(data) {
-                 console.log(data);
-                   while(results.firstChild) {
-                       results.removeChild(results.firstChild);
-                   }
-
-
-
-
-
-
+     console.log(url);
+     response.json().then(function(data) {
+       console.log(data);
+         while(results.firstChild) {
+             results.removeChild(results.firstChild);
+         }
       for(var i = 0; i < data.length; i++) {
         var loopData = data[i];
-
-
-
-        var audioLink = document.createElement('a');
-        audioLink.setAttribute('class', 'result')
-        audioLink.setAttribute('href', '#');
-        results.appendChild(audioLink);
-        audioLink.addEventListener('click', function(event) {
-          musicLink.setAttribute('src', loopData.stream_url + '?client_id=' + TOKEN );
-          console.log(musicLink);
-          console.log('$ curl "http://api.soundcloud.com/tracks/13158665?client_id=YOUR_CLIENT_ID"');
-          console.log('not picking up the right streamurl andddddd not playing the wrong one');
-        });
-
-
-
+        var myanchor = document.createElement('a');
+        myanchor.setAttribute('href', loopData.stream_url + '?client_id=' + TOKEN);
 
         var albumCover = document.createElement('div');
         albumCover.setAttribute('class', 'artwork');
-        albumCover.innerHTML = '<img src="' + loopData.artwork_url + '">';
-        audioLink.appendChild(albumCover);
-
-
-
+        if(loopData.artwork_url !== null) {
+            albumCover.innerHTML = '<img src="' + loopData.artwork_url + '">';
+        } else {
+            albumCover.innerHTML = '<img src="Soundcloud-logo.png">';
+        }
+        myanchor.appendChild(albumCover);
 
         var songTitle = document.createElement('p');
         songTitle.setAttribute('class', 'song-title');
         songTitle.textContent = loopData.title;
-        audioLink.appendChild(songTitle);
+        myanchor.appendChild(songTitle);
 
+        myanchor.addEventListener('click', function(event){
+          event.preventDefault();
+          musicLink.setAttribute('src', this.href);
+        });
 
+        results.appendChild(myanchor);
       }
-
       });
 
     });
