@@ -1,5 +1,8 @@
 (function() {
 
+
+const TOKEN = '8538a1744a7fdaa59981232897501e04';
+
   // delcaring variables
   var searchContainer = document.querySelector('.search-container');
   var search = document.querySelector('.search');
